@@ -1,0 +1,11 @@
+<!doctype html>
+<!-- The web app's sign-ins (src/os/host.ts, sdk/RPC.md §14.5): the provider
+     sends the popup back here; this hands the address to the app that
+     opened it (same origin only), then closes. -->
+<meta charset="utf-8" />
+<title>Signing in…</title>
+<p style="font: 15px system-ui, sans-serif; margin: 20vh auto; max-width: 30rem; text-align: center">Signing in… You can close this window.</p>
+<script>
+  if (window.opener) window.opener.postMessage({ hyperpane: 'oauth', url: location.href }, location.origin);
+  setTimeout(() => window.close(), 100);
+</script>
